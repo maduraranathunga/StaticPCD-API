@@ -1,0 +1,16 @@
+{
+    "type":"mssql",
+    "host":"BER-FRAPP-01",
+    "username":"staticpcdreader",
+    "password":"1qaz2wsx@123",
+    "database":"FR_UTIL",
+    "syncronize":false,
+    "entities":["dist/**/*.entity{.ts,.js}"],
+    "options":{
+        "enableArithAbort":false,
+        "encript":false,
+        "cryptoCredentialsDetails": {
+            "minVersion":"TLSv1"
+          }
+    }
+}

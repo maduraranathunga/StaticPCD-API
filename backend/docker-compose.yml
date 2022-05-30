@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  api:
+    # image: madurar/staticpcd-api
+    build: 
+      dockerfile: dockerfile
+      context: .
+    depends_on: 
+      - postgres
+    environment:
+      PORT: 3000
+    ports:
+      - "8080:4000"
+  
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - "35000:5432"
+    environment:
+      POSTGRES_USER: POSTGRES_USER
+      POSTGRES_PASSWORD: POSTGRES_PASSWORD
+      POSTGRES_DB: POSTGRES_DB

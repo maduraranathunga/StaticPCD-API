@@ -10,7 +10,7 @@
 
  RUN npm run build
  
- EXPOSE 4000
+ EXPOSE 3000:3000
 
- CMD ["node", "dist/main"]
+ CMD ["npm", "run","start:dev"]
 

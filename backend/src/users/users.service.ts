@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import {  Repository } from 'typeorm';
 import { User } from './Entity/user.entity';
-import bcrypt from "bcrypt";
+import * as bcrypt from "bcrypt";
 
 @Injectable()
 export class UsersService {
@@ -16,14 +16,14 @@ export class UsersService {
 
       async addUser(username:string,password:string){
         const saltRounds = 10;
-        const pwhash =await bcrypt.hashSync(password, saltRounds);
+        const pwhash =bcrypt.hashSync(password, saltRounds);
         let newuser=this.userRepository.create({username:username,password:pwhash})
           return this.userRepository.insert(newuser)
       }
 
       async updateUser(userId:number,username:string,password:string){
         const saltRounds = 10;
-        const pwhash =await bcrypt.hashSync(password, saltRounds);
+        const pwhash =bcrypt.hashSync(password, saltRounds);
         let newuser=this.userRepository.create({userId:userId,username:username,password:pwhash})
           return this.userRepository.save(newuser)
       }

@@ -9,6 +9,7 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { User } from './users/Entity/user.entity';
 import {Staticpcd} from './staticpcd/Entities/staticpcd.entity'
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
    imports: [TypeOrmModule.forRoot(),
@@ -16,7 +17,7 @@ import {Staticpcd} from './staticpcd/Entities/staticpcd.entity'
   TypeOrmModule.forRoot({
     name: 'postgres',
     type: 'postgres',
-    host: 'localhost',
+    host: 'db',
     port: 5432,
     username: 'postgres',
     password: 'Belpostgre123',

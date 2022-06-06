@@ -4,20 +4,21 @@ services:
   api:
     # image: madurar/staticpcd-api
     build: 
-      dockerfile: dockerfile
+      dockerfile: Dockerfile
       context: .
     depends_on: 
-      - postgres
+      - db
     environment:
-      PORT: 3000
+    #  DATABASE_URL: postgres://user:password@postgres:5432/staticpcd_controlroom
+      PORT: 4000
     ports:
-      - "8080:4000"
+      - "8080:3000"
   
-  postgres:
+  db:
     image: postgres:13-alpine
     ports:
-      - "35000:5432"
+      - 15432:5432
     environment:
-      POSTGRES_USER: POSTGRES_USER
-      POSTGRES_PASSWORD: POSTGRES_PASSWORD
-      POSTGRES_DB: POSTGRES_DB
+      POSTGRES_PASSWORD: Belpostgre123
+      restart: always
+      POSTGRES_DB: staticpcd_controlroom
